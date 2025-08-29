@@ -1,4 +1,23 @@
+// --- NAVBAR RESPONSIVE ---
+document.addEventListener('DOMContentLoaded', function () {
 
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function () {
+      navMenu.classList.toggle('active');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
+    // Opcional: cerrar menú al hacer click en un link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          navMenu.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+});
 document.addEventListener('DOMContentLoaded', () => {
   // Elementos del DOM
   const hamburger = document.querySelector('.hamburger');
