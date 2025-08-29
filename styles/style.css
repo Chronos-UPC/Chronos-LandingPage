@@ -18,7 +18,14 @@
 
 
 
-/* Reset y estilos base */
+
+
+
+
+
+/* ******************************************************************* */
+/* *************************  GENERAL STYLES  ************************ */
+/* ******************************************************************* */
 * {
   margin: 0;
   padding: 0;
@@ -74,7 +81,12 @@ img {
   color: var(--primary);
 }
 
-/* Navegación */
+/* ******************************************************************* */
+/* *************************  HEADER & NAV  ************************** */
+/* ******************************************************************* */
+/* ******************************************************************* */
+/* *************************  NAVBAR & MENU  ************************* */
+/* ******************************************************************* */
 .navbar {
   background-color: var(--white);
   box-shadow: var(--shadow);
@@ -113,10 +125,11 @@ img {
   display: flex;
   align-items: center;
   list-style: none;
+  gap: 1.5rem;
 }
 
 .nav-menu li {
-  margin-left: 1.5rem;
+  margin: 0;
 }
 
 .nav-link {
@@ -162,23 +175,80 @@ img {
   transform: translateY(-2px);
 }
 
+/* --- HAMBURGER --- */
 .hamburger {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 25px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 1001; /* aseguramos que esté sobre el nav-menu */
 }
 
 .bar {
   display: block;
-  width: 25px;
+  width: 100%;
   height: 3px;
-  margin: 5px auto;
+  margin: 4px 0;
   background-color: var(--secondary);
   transition: var(--transition);
 }
 
-/* Hero section */
+/* Animación al abrir/cerrar */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px; /* justo debajo del navbar */
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: left 0.3s ease;
+    z-index: 1000; /* debajo del hamburguesa */
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .button-link {
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+  }
+}
+
+
+/* ******************************************************************* */
+/* *************************  HERO SECTION  ************************** */
+/* ******************************************************************* */
 .hero {
   padding: 8rem 0 5rem;
   background-color: var(--white);
@@ -239,14 +309,12 @@ img {
   transform: translateY(-3px);
 }
 
-/*CARRUSEL/*
-
-/* Carrusel */
+/* CARRUSEL */
 .carousel__container {
   flex: 1;
   position: relative;
-  width: 800px;  /* más ancho */
-  height: 400px; /* más alto */
+  width: 800px;  
+  height: 400px; 
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -254,7 +322,6 @@ img {
   background: #fff;
   border-radius: 10px;
 }
-
 
 .carousel__slide {
   position: absolute;
@@ -276,7 +343,6 @@ img {
   animation: driveIn 1s ease forwards;
 }
 
-/* 🚗 Animación: entra desde la derecha → se va a la izquierda */
 @keyframes driveIn {
   from {
     transform: translateX(120%);
@@ -300,8 +366,9 @@ img {
 }
 
 
-/*QUE ES*/
-
+/* ******************************************************************* */
+/* *************************  FEATURES SECTION  ********************* */
+/* ******************************************************************* */
 .explore__container {
   display: flex;
   align-items: center;
@@ -362,7 +429,6 @@ img {
   border-radius: 25px;
 }
 
-/* 📱 Teléfono frontal */
 .phone-front {
   top: 30px;
   left: 250px;
@@ -370,7 +436,6 @@ img {
   z-index: 2;
 }
 
-/* 📱 Teléfono trasero */
 .phone-back {
   top: 0;
   left: 40px;
@@ -379,19 +444,9 @@ img {
   opacity: 0.9;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/*BENEFICIOS*/
-/* Sección */
+/* ******************************************************************* */
+/* *************************  BENEFITS SECTION  ********************* */
+/* ******************************************************************* */
 .benefits-section-futuristic {
   background: #fff;
   color: #000;
@@ -400,13 +455,11 @@ img {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Contenedor */
 .benefits-container-futuristic {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Títulos */
 .benefits-title-futuristic {
   font-size: 2.5rem;
   font-weight: 800;
@@ -421,7 +474,6 @@ img {
   margin-bottom: 70px;
 }
 
-/* Grid */
 .benefits-grid-futuristic {
   display: grid;
   justify-items: center;
@@ -429,7 +481,6 @@ img {
   gap: 40px;
 }
 
-/* Cards futuristas */
 .benefit-card-futuristic {
   text-align: center;
   background: #fff;
@@ -447,7 +498,6 @@ img {
   transform: translateY(-10px);
 }
 
-/* Íconos */
 .benefit-icon-futuristic {
   font-size: 2.8rem;
   margin-bottom: 20px;
@@ -458,7 +508,6 @@ img {
   color: #fff;
 }
 
-/* Títulos y textos */
 .benefit-card-futuristic h3 {
   font-size: 1.3rem;
   font-weight: 800;
@@ -473,20 +522,11 @@ img {
   line-height: 1.6;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* --- SECCIÓN "CÓMO FUNCIONA" --- */
+/* ******************************************************************* */
+/* ***********************  HOW IT WORKS SECTION  ******************* */
+/* ******************************************************************* */
 #howitworks {
-  background-color: #f5f5f5; /* Fondo gris */
+  background-color: #f5f5f5; 
   width: 100%;
 }
 
@@ -511,7 +551,6 @@ img {
   line-height: 1.6;
 }
 
-/* --- GRID DE CARDS --- */
 .special__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -520,22 +559,19 @@ img {
   align-items: stretch;
 }
 
-/* --- CARDS --- */
 .special__card {
-  background: #f5f5f5; /* mismo color que el fondo */
-  border-radius: 2rem; /* más redondeado */
+  background: #f5f5f5; 
+  border-radius: 2rem; 
   padding: 2rem 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-/* Hover: aparece la sombra y cambia a blanco */
 .special__card:hover {
   background: #fff;
   transform: translateY(-5px);
   box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
 }
 
-/* --- ICONOS EN CARDS --- */
 .special__card img {
   width: 60px;      
   height: 60px; 
@@ -543,7 +579,6 @@ img {
   display: block;
 }
 
-/* --- TEXTOS DE CARDS --- */
 .special__card h4 {
   font-size: 1.25rem;
   font-weight: 800;
@@ -556,20 +591,10 @@ img {
   line-height: 1.6;
 }
 
+/* ******************************************************************* */
+/* **************************  VIDEO SECTION  ************************ */
+/* ******************************************************************* */
 
-
-
-
-
-
-
-
-
-/*********************/
-/*SECCION INSPIRADORA*/
-/*********************/
-
-/* Sección principal */
 .f1-section {
   background: linear-gradient(135deg, #000 60%, #111 100%);
   color: #fff;
@@ -579,7 +604,6 @@ img {
   overflow: hidden;
 }
 
-/* Efecto de "líneas futuristas" sutiles en el fondo */
 .f1-section::before {
   content: "";
   position: absolute;
@@ -598,7 +622,6 @@ img {
   z-index: 0;
 }
 
-/* Contenedor */
 .f1-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -606,7 +629,6 @@ img {
   z-index: 1;
 }
 
-/* Título */
 .f1-title {
   font-size: 2.8rem;
   font-weight: 800;
@@ -618,7 +640,6 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
-/* Texto */
 .f1-text {
   font-size: 1.2rem;
   color: #bbb;
@@ -629,10 +650,9 @@ img {
   margin-right: auto;
 }
 
-/* Contenedor del video */
 .f1-video {
   position: relative;
-  padding-bottom: 56.25%;  /* Proporción 16:9 */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
   border-radius: 24px;
@@ -642,25 +662,22 @@ img {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Video interno */
 .f1-video video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* rellena sin deformar */
+  object-fit: cover;
   border-radius: 24px;
 }
 
-/* Hover elegante */
 .f1-video:hover {
   transform: scale(1.02);
   box-shadow: 0 0 35px rgba(255, 255, 255, 0.25),
               0 0 70px rgba(255, 255, 255, 0.15);
 }
 
-/* Animación de líneas del fondo */
 @keyframes moveLines {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }
@@ -668,26 +685,15 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-/* About section */
-/* About section */
+/* ******************************************************************* */
+/* *************************  ABOUT SECTION  ************************* */
+/* ******************************************************************* */
 .about {
   background-color: #000; /* Fondo negro */
   color: #fff; /* Texto blanco */
   padding: 5rem 2rem;
   text-align: center;
 }
-
-
-
 
 .about-intro {
   font-size: 1.1rem;
@@ -699,7 +705,6 @@ img {
   line-height: 1.6;
 }
 
-/* Team grid */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -762,15 +767,12 @@ img {
   color: #aaa;
 }
 
-
-
-
-/* FAQ section */
-/* FAQ section */
-/* FAQ section */
+/* ******************************************************************* */
+/* ***************************  FAQ SECTION  ************************* */
+/* ******************************************************************* */
 .faq-section {
   padding: 5rem 0;
-  background-color: var(--white); /* fondo blanco minimalista */
+  background-color: var(--white); 
 }
 
 .faq-list {
@@ -801,7 +803,6 @@ img {
   position: relative;
 }
 
-/* --- ICONO CÍRCULO + / – --- */
 .faq-icon {
   width: 20px;
   height: 20px;
@@ -835,12 +836,10 @@ img {
   transform: translate(-50%, -50%);
 }
 
-/* Cuando se abre el FAQ, el + se convierte en – */
 .faq-question[aria-expanded="true"] .faq-icon::after {
   opacity: 0;
 }
 
-/* --- RESPUESTA --- */
 .faq-answer {
   padding: 0;
   max-height: 0;
@@ -853,17 +852,12 @@ img {
   max-height: 500px;
 }
 
-
-
-
-
-/*********************/
-/*SECCION CONTACTO****/
-/*********************/
-
+/* ******************************************************************* */
+/* *************************  CONTACT SECTION  ********************** */
+/* ******************************************************************* */
 .contact {
   padding: 5rem 0;
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: #ffffff; 
   position: relative;
 }
 
@@ -881,7 +875,7 @@ img {
 }
 
 .contact-info {
-  background-color: #141414; /* Caja izquierda negra */
+  background-color: #141414; 
   color: #ffffff;
   padding: 3rem;
   border-radius: 10px;
@@ -939,7 +933,7 @@ img {
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: #fff; /* Íconos en blanco */
+  color: #fff; 
 }
 
 .contact-text h3 {
@@ -976,7 +970,6 @@ img {
   transform: translateY(-5px);
 }
 
-/* ===== LADO DERECHO FORM ===== */
 .contact-form-container {
   display: flex;
   align-items: center;
@@ -1002,7 +995,6 @@ img {
   margin-bottom: 2rem;
 }
 
-/* ===== FORMULARIO ===== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1039,7 +1031,7 @@ img {
   left: 0;
   width: 0;
   height: 2px;
-  background: #141414; /* Línea de enfoque negra */
+  background: #141414;
   transition: 0.4s;
 }
 
@@ -1048,7 +1040,6 @@ img {
   width: 100%;
 }
 
-/* Checkbox */
 .form-checkbox {
   display: flex;
   align-items: flex-start;
@@ -1067,7 +1058,6 @@ img {
   text-decoration: underline;
 }
 
-/* Botón */
 .submit-button {
   display: flex;
   align-items: center;
@@ -1101,35 +1091,17 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* === FOOTER CHRONOS - BLANCO & NEGRO MINIMALISTA === */
+/* ******************************************************************* */
+/* *************************  FOOTER SECTION  ************************ */
+/* ******************************************************************* */
 .footer {
-  background: #0d0d0d; /* Negro profundo */
-  color: #f5f5f5;      /* Blanco suave */
+  background: #0d0d0d; 
+  color: #f5f5f5;     
   font-family: 'Inter', 'Roboto', sans-serif;
   position: relative;
   overflow: hidden;
 }
 
-/* Sutil degradado gris oscuro */
 .footer-top {
   padding: 5rem 0;
   background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
@@ -1141,7 +1113,6 @@ img {
   gap: 3rem;
 }
 
-/* --- LOGO E INFO --- */
 .footer-info {
   display: flex;
   flex-direction: column;
@@ -1175,7 +1146,6 @@ img {
   font-size: 0.95rem;
 }
 
-/* --- REDES SOCIALES --- */
 .footer-social {
   display: flex;
   gap: 1rem;
@@ -1201,7 +1171,6 @@ img {
   transform: translateY(-4px) scale(1.05);
 }
 
-/* --- ENLACES --- */
 .footer-links h3,
 .footer-newsletter h3 {
   font-size: 1.2rem;
@@ -1257,7 +1226,6 @@ img {
   color: #fff;
 }
 
-/* --- NEWSLETTER --- */
 .footer-newsletter p {
   color: #aaa;
   margin-bottom: 1.5rem;
@@ -1303,7 +1271,6 @@ img {
   box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
-/* --- PARTE INFERIOR --- */
 .footer-bottom {
   padding: 1.5rem 0;
   background: #0a0a0a;
@@ -1337,7 +1304,6 @@ img {
   color: #fff;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
